@@ -1,0 +1,88 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int c;
+    cout << "Hi! Tired of physics? We don't promise to remove it, but we will help you!\n";
+    cout << "This is an Ohm's Law calculator!\n";
+    cout << "Choose the type of circuit:\n1. Series circuit\n2. Parallel circuit\n";
+    cin >> c;
+
+    if (c == 1) {
+        double i, v, r;
+        int f;
+        cout << "What do you need to find?\n1. Current\n2. Voltage\n3. Resistance\n";
+        cin >> f;
+
+        switch (f) {
+            case 1:
+                cout << "Enter voltage: ";
+                cin >> v;
+                cout << "Enter resistance: ";
+                cin >> r;
+                i = v / r;
+                cout << "Current is " << i << " A\n";
+                break;
+
+            case 2:
+                cout << "Enter current: ";
+                cin >> i;
+                cout << "Enter resistance: ";
+                cin >> r;
+                v = r * i;
+                cout << "Voltage is " << v << " V\n";
+                break;
+
+            case 3:
+                cout << "Enter voltage: ";
+                cin >> v;
+                cout << "Enter current: ";
+                cin >> i;
+                r = v / i;
+                cout << "Resistance is " << r << " Ω\n";
+                break;
+        }
+    } 
+    else if (c == 2) {
+        double v, i, r_total = 0;
+        int f, n;
+        cout << "What do you need to find?\n1. Current\n2. Voltage\n3. Resistance\n";
+        cin >> f;
+
+        switch (f) {
+            case 1:
+                cout << "Enter voltage: ";
+                cin >> v;
+                cout << "Enter total resistance: ";
+                cin >> r_total;
+                i = v / r_total;
+                cout << "Total current is " << i << " A\n";
+                break;
+
+            case 2:
+                cout << "Enter total current: ";
+                cin >> i;
+                cout << "Enter total resistance: ";
+                cin >> r_total;
+                v = r_total * i;
+                cout << "Voltage is " << v << " V\n";
+                break;
+
+            case 3:
+                cout << "How many resistors? ";
+                cin >> n;
+                double resistors[100];
+                cout << "Enter " << n << " resistance values:\n";
+                for (int j = 0; j < n; j++) {
+                    cin >> resistors[j];
+                    r_total += 1 / resistors[j];
+                }
+                r_total = 1 / r_total;
+                cout << "Total resistance is " << r_total << " Ω\n";
+                break;
+        }
+    }
+
+    return 0;
+}
